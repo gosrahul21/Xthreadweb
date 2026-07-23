@@ -137,7 +137,7 @@ export default function Home() {
           <div>
             <p className="eyebrow mb-5 text-amber">Chrome extension · for X (Twitter)</p>
             <h1 className="font-display text-balance text-[2.75rem] leading-[1.05] tracking-tight text-paper sm:text-6xl">
-              Your best tweets deserve better than a screenshot.
+              Capture X (Twitter) posts and threads instantly
             </h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-paper-dim">
               XThreadShot adds a Snap button to your timeline. One click strips
@@ -232,9 +232,8 @@ export default function Home() {
             {comparisonRows.map((row, i) => (
               <div
                 key={row.label}
-                className={`grid grid-cols-[1fr_1fr_1fr] border-t border-hair text-sm ${
-                  i % 2 === 0 ? "bg-panel" : "bg-ink-soft"
-                }`}
+                className={`grid grid-cols-[1fr_1fr_1fr] border-t border-hair text-sm ${i % 2 === 0 ? "bg-panel" : "bg-ink-soft"
+                  }`}
               >
                 <div className="px-5 py-4 text-paper-dim">{row.label}</div>
                 <div className="px-5 py-4 font-medium text-paper">{row.xthreadshot}</div>

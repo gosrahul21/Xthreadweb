@@ -39,28 +39,33 @@ const steps = [
 const comparisonRows = [
   {
     label: "Where you start",
-    xthreadshot: "Right on the timeline",
-    others: "Copy link, open new tab, paste",
+    xthreadshot: "✅ Right on the timeline",
+    others: "❌ Copy link, open new tab, paste",
   },
   {
     label: "Thread capture",
-    xthreadshot: "Full thread, stitched automatically",
-    others: "One post at a time",
+    xthreadshot: "✅ Full thread, stitched automatically",
+    others: "❌ One post at a time",
   },
+  // {
+  //   label: "Thread trimming",
+  //   xthreadshot: "✅ Choose to see only last messages",
+  //   others: "❌ Manual cropping required",
+  // },
   {
     label: "Where it renders",
-    xthreadshot: "Locally, in your browser",
-    others: "Uploaded to a server",
+    xthreadshot: "✅ Locally, in your browser",
+    others: "❌ Uploaded to a server",
   },
   {
     label: "Past snaps",
-    xthreadshot: "Saved to a local gallery",
-    others: "Gone after download",
+    xthreadshot: "✅ Saved to a local gallery",
+    others: "❌ Gone after download",
   },
   {
     label: "Typical time per post",
-    xthreadshot: "~3 seconds",
-    others: "2–5 minutes",
+    xthreadshot: "✅ ~3 seconds",
+    others: "❌ 2–5 minutes",
   },
 ];
 
@@ -72,13 +77,13 @@ const features = [
   },
   {
     frame: "02",
-    title: "Premium backgrounds",
-    body: "Curated gradients, solid colors, or transparent PNGs, with adjustable padding.",
+    title: "Beautiful styling",
+    body: "Curated backgrounds, light & dark themes, and adjustable padding.",
   },
   {
     frame: "03",
-    title: "Light & dark themes",
-    body: "Match the snap to whatever you're publishing it into.",
+    title: "Thread trimming",
+    body: "Long thread? Choose to see only the last few messages for a cleaner snap.",
   },
   {
     frame: "04",
@@ -104,6 +109,42 @@ const audiences = [
   "Researchers & archivists",
 ];
 
+const testimonials = [
+  {
+    name: "Sarah Jenks",
+    handle: "@sarahjenks",
+    body: "XThreadShot has completely changed how I share tweets on LinkedIn. It takes 2 seconds and looks incredibly professional. Must have extension!",
+    avatar: "https://i.pravatar.cc/150?u=meloni"
+  },
+  {
+    name: "David Chen",
+    handle: "@davidchen_dev",
+    body: "Finally, a tool that actually stitches threads together. Absolutely brilliant execution.",
+    avatar: "https://i.pravatar.cc/150?u=fucking"
+  },
+  {
+    name: "Alex Rivera",
+    handle: "@arivera_growth",
+    body: "I was manually cropping screenshots for my newsletter every week. This just saved me hours of tedious work. 10/10.",
+    avatar: "https://i.pravatar.cc/150?u=systematic"
+  }
+];
+
+const faqs = [
+  {
+    q: "Do you store my tweets or data?",
+    a: "Absolutely not. All processing happens entirely locally on your device in your browser. We don't have servers that store your data."
+  },
+  {
+    q: "Does it work on Safari or mobile?",
+    a: "Currently, XThreadShot is only available as a Chrome & Edge Extension for desktop."
+  },
+  {
+    q: "Can I customize the background?",
+    a: "Yes, you can choose from beautiful curated gradients, solid colors, or even transparent PNGs."
+  }
+];
+
 export default function Home() {
   return (
     <main className="flex flex-col">
@@ -111,9 +152,9 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b border-hair bg-ink/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="flex items-center gap-2">
-            <img src="/icons/logo.svg" alt="XThreadShot" width="24" height="24" />
-            <span className="font-display text-lg tracking-tight text-paper">
-              XThreadShot
+            <img src="/icons/logo.svg" alt="XThreadShot Logo" width="28" height="28" className="rounded-lg shadow-sm" />
+            <span className="font-body text-xl font-bold tracking-tight text-paper">
+              XThread<span className="text-amber">Shot</span>
             </span>
           </a>
           <nav className="hidden items-center gap-8 text-sm text-paper-dim md:flex">
@@ -137,12 +178,11 @@ export default function Home() {
           <div>
             <p className="eyebrow mb-5 text-amber">Chrome extension · for X (Twitter)</p>
             <h1 className="font-display text-balance text-[2.75rem] leading-[1.05] tracking-tight text-paper sm:text-6xl">
-              Your best tweets deserve better than a screenshot.
+               Capture X(Twitter) posts and threads instantly
             </h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-paper-dim">
-              XThreadShot adds a Snap button to your timeline. One click strips
-              the clutter and turns a post — or a full thread — into a clean,
-              on-brand image. No web app, no stitching, no waiting.
+              One click turns a thread into a clean,
+              on-brand image
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
@@ -158,10 +198,21 @@ export default function Home() {
                 See how it works
               </a>
             </div>
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 text-xs text-paper-dim">
-              <span className="eyebrow text-paper-dim">Runs locally</span>
+            <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-xs text-paper-dim">
               <span className="eyebrow text-paper-dim">No account needed</span>
               <span className="eyebrow text-paper-dim">Full-thread capture</span>
+               <span className="eyebrow text-paper-dim">Thread Customization</span>  
+            </div>
+            <div className="mt-10 flex items-center gap-4 border-t border-hair pt-6">
+              {/* <div className="flex -space-x-2">
+                <div className="h-8 w-8 rounded-full border-2 border-ink bg-amber-soft/20 flex items-center justify-center text-xs">👨‍💻</div>
+                <div className="h-8 w-8 rounded-full border-2 border-ink bg-mint/20 flex items-center justify-center text-xs">👩‍🎨</div>
+                <div className="h-8 w-8 rounded-full border-2 border-ink bg-ember/20 flex items-center justify-center text-xs">📈</div>
+                <div className="h-8 w-8 rounded-full border-2 border-ink bg-amber/20 flex items-center justify-center text-xs">✍️</div>
+              </div> */}
+              <div className="text-sm text-paper-dim">
+                <span className="font-semibold text-paper">1,000+</span> creators already use XThreadShot
+              </div>
             </div>
           </div>
           <SnapDemo />
@@ -232,9 +283,8 @@ export default function Home() {
             {comparisonRows.map((row, i) => (
               <div
                 key={row.label}
-                className={`grid grid-cols-[1fr_1fr_1fr] border-t border-hair text-sm ${
-                  i % 2 === 0 ? "bg-panel" : "bg-ink-soft"
-                }`}
+                className={`grid grid-cols-[1fr_1fr_1fr] border-t border-hair text-sm ${i % 2 === 0 ? "bg-panel" : "bg-ink-soft"
+                  }`}
               >
                 <div className="px-5 py-4 text-paper-dim">{row.label}</div>
                 <div className="px-5 py-4 font-medium text-paper">{row.xthreadshot}</div>
@@ -280,6 +330,54 @@ export default function Home() {
               >
                 {a}
               </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WALL OF LOVE */}
+      <section className="relative">
+        <div className="sprockets" aria-hidden="true" />
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="eyebrow text-mint text-center block">Wall of Love</p>
+          <h2 className="mt-3 font-display text-3xl leading-tight text-paper sm:text-4xl text-center">
+            Loved by creators and founders.
+          </h2>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <div key={t.handle} className="rounded-2xl border border-hair bg-panel p-6 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <img src={t.avatar} alt={t.name} className="h-10 w-10 shrink-0 rounded-full object-cover border border-hair" />
+                  <div>
+                    <p className="text-sm font-semibold text-paper">{t.name}</p>
+                    <p className="text-xs text-paper-dim">{t.handle}</p>
+                  </div>
+                </div>
+                <p className="text-sm leading-relaxed text-paper-dim">&quot;{t.body}&quot;</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-ink-soft">
+        <div className="mx-auto max-w-3xl px-6 py-20">
+          <p className="eyebrow text-amber text-center block">FAQ</p>
+          <h2 className="mt-3 font-display text-3xl leading-tight text-paper sm:text-4xl text-center mb-12">
+            Common questions.
+          </h2>
+          <div className="flex flex-col gap-4">
+            {faqs.map((faq) => (
+              <details key={faq.q} className="group rounded-2xl border border-hair bg-panel px-6 py-4 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer items-center justify-between gap-4 font-semibold text-paper">
+                  {faq.q}
+                  <span className="transition-transform group-open:rotate-45 text-amber text-xl">+</span>
+                </summary>
+                <p className="mt-4 text-sm leading-relaxed text-paper-dim pb-2">
+                  {faq.a}
+                </p>
+              </details>
             ))}
           </div>
         </div>

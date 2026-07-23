@@ -1,0 +1,55 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFA726"/>
+      <stop offset="100%" stop-color="#E65100"/>
+    </linearGradient>
+
+    <!-- White = visible, Black = transparent -->
+    <mask id="cutout">
+      <rect width="1024" height="1024" fill="white"/>
+
+      <!-- Scan corners become transparent -->
+      <g
+        stroke="black"
+        stroke-width="28"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none">
+
+        <path d="M170 330V210H320"/>
+        <path d="M704 210H854V330"/>
+        <path d="M170 694V814H320"/>
+        <path d="M854 694V814H704"/>
+      </g>
+
+      <!-- Transparent X -->
+      <path
+        fill="black"
+        d="
+          M298 300
+          L382 300
+          L515 474
+          L648 300
+          L731 300
+          L560 520
+          L746 760
+          L662 760
+          L512 566
+          L362 760
+          L278 760
+          L464 520
+          Z"/>
+    </mask>
+  </defs>
+
+  <!-- Orange background with transparent X and scan corners -->
+  <rect
+      x="32"
+      y="32"
+      width="960"
+      height="960"
+      rx="140"
+      fill="url(#bg)"
+      mask="url(#cutout)"/>
+</svg>
