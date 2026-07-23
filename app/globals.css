@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #12131a;
+  --ink-soft: #1a1c26;
+  --panel: #1c1e29;
+  --panel-2: #242631;
+  --hair: rgba(245, 243, 236, 0.1);
+  --hair-strong: rgba(245, 243, 236, 0.18);
+  --paper: #f2efe6;
+  --paper-dim: #cfcdc4;
+  --amber: #f2b53c;
+  --amber-soft: #f7d087;
+  --mint: #7fe0bf;
+  --ember: #e8654a;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-hair: var(--hair);
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-mint: var(--mint);
+  --color-ember: var(--ember);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fine film grain overlay */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Sprocket strip — the film-reel motif that borders key sections */
+.sprockets {
+  height: 22px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--panel-2) 0 10px,
+    transparent 10px 22px
+  );
+  background-position: 6px 6px;
+  background-size: 22px 10px;
+  background-repeat: repeat-x;
+  position: relative;
+}
+.sprockets::before,
+.sprockets::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+}
+.sprockets::before {
+  clip-path: polygon(0 0, 100% 0, 100% 6px, 0 6px);
+}
+.sprockets::after {
+  clip-path: polygon(0 16px, 100% 16px, 100% 100%, 0 100%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+/* Shutter flash pulse, used sparingly on the hero's Snap button */
+@keyframes shutter-flash {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(242, 181, 60, 0.0); }
+  50% { box-shadow: 0 0 0 14px rgba(242, 181, 60, 0.0); }
+}
+
+@keyframes flash-pop {
+  0% { opacity: 0; }
+  8% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.flash-pop {
+  animation: flash-pop 2.6s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+.drift {
+  animation: drift 5s ease-in-out infinite;
+}
+
+.tick-strike {
+  position: relative;
+}
+.tick-strike::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 50%;
+  height: 1px;
+  background: var(--ember);
+  transform: rotate(-3deg);
+  opacity: 0.7;
+}
